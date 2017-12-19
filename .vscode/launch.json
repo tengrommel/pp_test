@@ -17,9 +17,6 @@
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
                 "RedirectOutput"
-            ],
-            "args": [
-                4
             ]
         },
         {

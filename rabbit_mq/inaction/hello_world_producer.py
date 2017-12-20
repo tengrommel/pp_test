@@ -1,5 +1,15 @@
 # coding: utf-8
 import pika, sys
+"""
+连接到RabbitMQ
+获得信道
+声明交换器
+声明队列
+把队列和交换器绑定起来
+消费消息
+关闭信道
+关闭连接
+"""
 
 credentials = pika.PlainCredentials("guest", "guest")
 conn_params = pika.ConnectionParameters("localhost", credentials=credentials)

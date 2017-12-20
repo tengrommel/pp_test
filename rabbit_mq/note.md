@@ -52,6 +52,23 @@ RabbitMQ将会决定消息该投递到哪个队列，这些规则被称作路由
   channel->queue_bind('all-logs', 'logs-exchange', '#');<br>
 - header
 
+#### 多租户模式：虚拟机和隔离
+
+- vhost
+>每一个RabbitMQ服务器都能创建虚拟消息服务器，我们称之为虚拟主机(vhost)。
+*作用：通过在各个实例间提供逻辑上分离，允许你为不同应用程序安全保密地运行数据。*
+*vhost是唯一无法通过AMQP协议创建的基元*
+>sudo rabbitmqctl set_user_tags guest  administrator management<br>
+sudo rabbitmqctl set_permissions -p vhost_teng guest '.*' '.*' '.*'
+
+#### 持久化
+
+- 每个队列和交换机的durable属性(false)
+- 避免消息从rabbit崩溃中丢失
+    -把它的投递模式选项设置为2
+    -发送到持久化的交换器
+    -到达持久化的队列
+
 ## rabbitmq 管理
 
 >Erlang天生就能让应用程序无须知道对方是否在同一台机器上即可相互通信。<br>

@@ -18,7 +18,7 @@
 >AMQP消息路由必须有三部分：交换器、队列和绑定。生产者把消息发布到交换器上；消息最终到达队列，并被消费者接收；<br>
 绑定决定了消息如何从路由器路由到特定的队列。
 
-### 消费者通过下面两种方式从特定的队列中接收消息
+##### 消费者通过下面两种方式从特定的队列中接收消息
 
 - （1）通过AMQP的basic.consume命令订阅。这样做会将信道置为接收模式，直到取消对队列的订阅为止。
 
@@ -30,6 +30,28 @@
 
 - 当rabbit队列拥有多个消费者时，队列收到的消息将以循环(round-robin)的方式发送给消费者。
     *basic.ack*
+
+#### 联合起来：交换器和绑定
+RabbitMQ将会决定消息该投递到哪个队列，这些规则被称作路由键(routing key)。<br>
+队列通过路由键绑定到交换器。<br>
+
+#### 交换机的四种类型
+
+- direct
+  *如果路由匹配的话，消息就被投递到对应的队列。*
+  > channel->basic_publish($msg, '', 'queue-name');<br>
+  第一个参数是你想要发送的消息内容；<br>
+  第二个参数是一个空的字符串，指定了默认交换器；<br>
+  而第三个就是路由键了。
+- fanout
+  *当你发送一条消息到fanout交换器时，它会把消息投递给所有附加在此的交换器上的队列。*
+- topic
+  *它使得来自不同源头的消息能够到达同一个队列。*
+  >channel->basic_publish($msg, 'logs-exchange', 'error.msg-inbox');<br>
+  channel->queue_bind('msg-inbox-errors', 'logs-exchange', 'error.msg-index');<br>
+  channel->queue_bind('all-logs', 'logs-exchange', '#');<br>
+- header
+
 ## rabbitmq 管理
 
 >Erlang天生就能让应用程序无须知道对方是否在同一台机器上即可相互通信。<br>

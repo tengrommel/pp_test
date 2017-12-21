@@ -84,4 +84,13 @@ sudo rabbitmqctl set_permissions -p vhost_teng guest '.*' '.*' '.*'
 
 ### 停止节点
 
-rabbitmqctl
+rabbitmqctl stop 
+>rabbitmqctl会和本地节点通信并指示其干净地关闭。同时关闭rabbit、mnesia和os_mon。
+
+- 关闭和重启应用程序：有何差别:
+>rabbitmqctl stop_app 只关闭rabbit应用程序
+
+- Rabbit配置文件
+>/etc/rabbitmq/rabbitmq.config
+
+### 修复Rabbit： 疑难解答

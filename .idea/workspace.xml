@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fdf85411-bf9d-4138-ba13-f0eb44742b5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit_mq/second/new_task.py" afterPath="$PROJECT_DIR$/rabbit_mq/second/new_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit_mq/second/worker.py" afterPath="$PROJECT_DIR$/rabbit_mq/second/worker.py" />
-    </list>
+    <list default="true" id="fdf85411-bf9d-4138-ba13-f0eb44742b5d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +93,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="65" />
     <option name="y" value="75" />
     <option name="width" value="1337" />
@@ -357,11 +353,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513824219171</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="work超时">
+      <created>1513826457841</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1513826457841</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
+    <frame x="0" y="34" width="1920" height="1046" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -396,7 +399,8 @@
     <MESSAGE value="rabbit_mq hello" />
     <MESSAGE value="send hello" />
     <MESSAGE value="send" />
-    <option name="LAST_COMMIT_MESSAGE" value="send" />
+    <MESSAGE value="work超时" />
+    <option name="LAST_COMMIT_MESSAGE" value="work超时" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

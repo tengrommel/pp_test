@@ -109,3 +109,6 @@ rabbitmqctl stop
 - rabbit的数据库Mnesia(NOSQL)
 >作用存储队列、交换器、绑定等信息<br>
 *RabbitMQ启动时做的第一件事就是启动Mnesia数据库。*
+
+### Erlang Port Mapper Daemon(epmd)
+> 当你启动一个分布式Erlang节点时，它会用epmd进程进行注册，提供OS内核分配的地址和端口。<br>

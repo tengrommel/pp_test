@@ -4,6 +4,11 @@
 import pika
 import time
 
+'''
+It needs to fake a second of work for every dot in the message body.
+It will pop messages form the queue and perform the task.
+'''
+
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
 

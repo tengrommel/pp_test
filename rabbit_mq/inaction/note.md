@@ -94,3 +94,18 @@ rabbitmqctl stop
 >/etc/rabbitmq/rabbitmq.config
 
 ### 修复Rabbit： 疑难解答
+
+- badrpc、nodedown和其他Erlang引起的问题
+> Erlang cookie
+*Erlang节点通过交换作为秘密令牌的Erlang cookie以获得认证。*
+
+### rabbitmqctl启动的原理
+- 启动Erlang节点，并从那里使用Erlang分布式系统连接RabbitMQ节点。<br>
+- 条件：
+    >适合的Erlang cookie和适合的节点名称<br>
+    ~/.erlang.cookie
+
+### Mnesia和主机名
+- rabbit的数据库Mnesia(NOSQL)
+>作用存储队列、交换器、绑定等信息<br>
+*RabbitMQ启动时做的第一件事就是启动Mnesia数据库。*

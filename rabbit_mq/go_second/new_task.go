@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"strings"
 
 	"github.com/streadway/amqp"
 )
@@ -14,43 +16,45 @@ func failOnError(err error, msg string) {
 	}
 }
 
+// 发送者
 func main() {
 	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
-	defer ch.Close()
+	defer conn.Close()
 
 	ch, err := conn.Channel()
 	failOnError(err, "Failed to open a channel")
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"task_queue",	// name
-		true,		// durable
-		false,		// delete when unused
-		false,		// exclusive
-		false,		// no-wait
-		nil,		// arguments
+		"task_queue", // name
+		true,         // durable
+		false,        // delete when unused
+		false,        // exclusive
+		false,        // no-wait
+		nil,          // arguments
 	)
 	failOnError(err, "Failed to declare a queue")
 
 	body := bodyFrom(os.Args)
 	err = ch.Publish(
-		"", // exchange
+		"",     // exchange
 		q.Name, // routing key
-		false, // mandatory
+		false,  // mandatory
 		false,
 		amqp.Publish{
 			DeliveryMode: amqp.Persistent,
-			ContentType: "text/plain",
-			Body: []byte(body),
+			ContentType:  "text/plain",
+			Body:         []byte(body),
 		})
 	failOnError(err, "Failed to publish a message")
 	log.Printf("[x] Sent %s", body)
 }
 
+// 设置默认传送字符
 func bodyFrom(args []string) string {
 	var s string
-	if (len(args)<2) || os.Args[1] == ""{
+	if (len(args) < 2) || os.Args[1] == "" {
 		s = "hello"
 	} else {
 		s = strings.Join(args[1:], "")

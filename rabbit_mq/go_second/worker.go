@@ -41,6 +41,17 @@ func main() {
 	)
 	failOnError(err, "Failed to set Qos")
 
+	msgs, err := ch.Consume(
+		q.Name, // queue
+		"", // consumer
+		false, // auto-ack
+		false, // exclusive
+		false, // no-local
+		false, // no-wait
+		nil,   // args
+	)
+	failOnError(err, "Failed to register a consumer")
+
 	forever := make(chan bool)
 	go func(){
 		for d := range msgs{
